@@ -10,21 +10,29 @@ function BandInput({ onBandSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
     onBandSubmit(name);
+    setName("");
+  }
+
+  function createFakeBands() {
+    ["a", "b", "c", "d"].forEach((fakeBandName) => onBandSubmit(fakeBandName));
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleInputChange}
-        />
-      </label>
-      <button type="submit">Add Band</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleInputChange}
+          />
+        </label>
+        <button type="submit">Add Band</button>
+      </form>
+      <button onClick={createFakeBands}>Create Fake Bands</button>
+    </>
   );
 }
 
